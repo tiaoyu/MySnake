@@ -1,0 +1,2 @@
+# MySnake
+use C++,OpenGL

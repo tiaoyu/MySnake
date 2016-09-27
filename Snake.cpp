@@ -2,11 +2,12 @@
 using namespace std;
 Snake::Snake()
 {
+	cout << "===> this is Snake()" << endl;
 }
 
 Snake::~Snake()
 {
-
+	cout << "===> this is ~Snake()" << endl;
 }
 /**
  * get input from keyboard
@@ -71,18 +72,30 @@ Snake::die()
  * keep moving
  */
 void 
-Snake::moveOn(Ground &ground)
+Snake::moveOn()
 {
 	Point* pHead = &body.front ();
 	Point* pTemp = NULL;
 
 	int x = pHead->getX();
 	int y = pHead->getY();
-	if ( x <= 0 - ground.getHeight() || x >= ground.getHeight() - 1
-		|| y <= 0 - ground.getWidth() || y >= ground.getWidth() - 1 )
+	if ( x < -50 )
 	{
-		deadth = true;
-		return ;
+		x = 50;
+	} 
+	else if ( x > 50 )
+	{
+		x = -50;
+	}
+	else if (y < -50 )
+	{
+		y = 50;		
+	}
+	else if ( y > 50 )
+	{
+		y = -50;
+		// deadth = true;
+		// return ;
 	}
 
 	switch ( direction )
@@ -119,22 +132,6 @@ Snake::print()
 		cout << "| (" << i->getX() << "," << i->getY() << ") |" << endl;
 	}
 	cout << "<Snakes' Tail>" << endl;
-}
-
-void 
-Snake::print( Ground &ground)
-{
-	for ( list<Point>::iterator i = body.begin(); i != body.end(); ++i )
-	{
-		int x = i->getX();
-		int y = i->getY();
-		if ( x > ground.getHeight() && x < ground.getHeight()
-			&& y > 0 && y < ground.getWidth() )
-		{
-			ground.ground[i->getX()][i->getY()] = 'o';
-		}
-	}
-	ground.print();
 }
 
 /**

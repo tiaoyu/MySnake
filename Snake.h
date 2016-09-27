@@ -9,7 +9,6 @@
 #include <unistd.h>
 #include <string.h>
 #include "Point.h"
-#include "Ground.h"
 using namespace std;
 
 /**
@@ -28,14 +27,13 @@ class Snake
 public:
 	Snake();
 	~Snake();
-	void move();
-	void init();
-	void print();
-	void die();
-	void print( Ground &ground );
-	void addTail( Point p );
-	void moveOn( Ground &ground );
-	int getch();
+	void move();	// snake move
+	void init();	// snake init
+	void print();	// print snake
+	void die();		// snake die
+	void addTail( Point p );	// snake add tial
+	void moveOn();
+	int getch();	// get keyboard listen
 
 	// direction of snake
 	int direction;

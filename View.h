@@ -3,15 +3,7 @@
 
 #include <GL/glut.h>
 #include "Snake.h"
-#include "Ground.h"
 #include "Food.h"
-template <typename TYPE, void ( TYPE::*display)()>
-void* _display( void )
-{
-	TYPE view;
-	view.display();
-	return NULL; 
-}
 
 class View
 {
@@ -21,7 +13,6 @@ public:
 	~View();
 private:
 	static Snake snake;
-	static Ground ground;
 	static Food food;
 	static void idle();
 	static void display();

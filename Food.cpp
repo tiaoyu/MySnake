@@ -2,7 +2,7 @@
 
 Food::Food()
 {
-	
+	cout << "===> this is Food()" << endl;
 }
 
 Food::Food( int x, int y ):Point( x, y )
@@ -24,5 +24,5 @@ void Food::create( Snake &snake )
 
 Food::~Food()
 {
-	
+	cout << "===> this is ~Food()" << endl;
 }

@@ -1,5 +1,4 @@
 #include "Snake.h"
-#include "Ground.h"
 #include "View.h"
 #include <stdio.h>
 #include <unistd.h>
@@ -8,8 +7,7 @@
 #include <stdlib.h>
 #include <pthread.h>
 #include <sys/time.h>
-#include <iostream>
-using namespace std;
+
 int 
 main(int argc, char *argv[])
 {

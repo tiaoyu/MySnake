@@ -1,14 +1,14 @@
 #include "View.h"
 
 Snake View::snake = Snake();
-Ground View::ground = Ground();
 Food View::food = Food();
 View::View()
 {
+	cout << "===> this is View()" << endl;
 }
 View::~View()
 {
-
+	cout << "===> this is ~View()" << endl;
 }
 void 
 View::init( int argc, char* argv[] )
@@ -16,8 +16,8 @@ View::init( int argc, char* argv[] )
 	snake.init();
 	food.create( snake );
 	glutInit ( &argc, argv );
-	glutInitDisplayMode( GLUT_RGBA | GLUT_DOUBLE );
-	glutInitWindowPosition ( 600, 600 );
+	glutInitDisplayMode ( GLUT_RGBA | GLUT_DOUBLE );
+	glutInitWindowPosition ( 400, 400 );
 	glutInitWindowSize ( 600, 600 );
 	glutCreateWindow ( "First OpenGL" );
 	glutDisplayFunc ( &display );
@@ -25,11 +25,12 @@ View::init( int argc, char* argv[] )
 	glutKeyboardFunc ( &keyboard );
 	glutMainLoop ();
 }
+
 void 
 View::idle()
 {
 	snake.oldTail = snake.body.front ();
-	snake.moveOn( ground );
+	snake.moveOn();
 	if ( snake.body.front ().getX() == food.getX() 
 		&& snake.body.front ().getY() == food.getY())
 	{
@@ -47,6 +48,7 @@ View::idle()
 
 	display();
 }
+
 void 
 View::display()
 {
@@ -75,6 +77,7 @@ View::display()
 void 
 View::keyboard( unsigned char key, int x, int y )
 {
+	cout << "( " << x << " , " << y << " )" << endl;
 	switch ( key )
 	{
 	case 'W':case 'w':

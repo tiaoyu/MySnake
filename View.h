@@ -4,6 +4,8 @@
 #include <GL/glut.h>
 #include "Snake.h"
 #include "Food.h"
+#include "Score.h"
+#include "Connect.h"
 
 class View
 {
@@ -14,6 +16,8 @@ public:
 private:
 	static Snake snake;
 	static Food food;
+	static Score score;
+	static Connect connect;
 	static void idle();
 	static void display();
 	static void keyboard( unsigned char key, int x, int y );

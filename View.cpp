@@ -2,6 +2,8 @@
 
 Snake View::snake = Snake();
 Food View::food = Food();
+Score View::score = Score();
+Connect View::connect = Connect();
 View::View()
 {
 	cout << "===> this is View()" << endl;
@@ -15,6 +17,7 @@ View::init( int argc, char* argv[] )
 {
 	snake.init();
 	food.create( snake );
+	score.setSco( 0 );
 	glutInit ( &argc, argv );
 	glutInitDisplayMode ( GLUT_RGBA | GLUT_DOUBLE );
 	glutInitWindowPosition ( 400, 400 );
@@ -35,12 +38,15 @@ View::idle()
 		&& snake.body.front ().getY() == food.getY())
 	{
 		food.create ( snake );
+		score.setSco ( score.getSco() + 1 );
 		snake.addTail(snake.oldTail);
 		cout << snake.body.size() << endl;
+
 	}
 
 	if ( snake.deadth )
 	{
+		connect.sendData( "127.0.0.1", score, 8080 );
 		cout << "===> sanke die.Game over!" << endl;
 		sleep (3);
 		exit (0);

@@ -79,24 +79,31 @@ Snake::moveOn()
 
 	int x = pHead->getX();
 	int y = pHead->getY();
-	if ( x < -50 )
-	{
-		x = 50;
-	} 
-	else if ( x > 50 )
-	{
-		x = -50;
+	// 1. Yes Ground
+	if ( x < -49 || x > 49 || y < -49 || y > 49){
+		deadth = true;
+		return ;
 	}
-	else if (y < -50 )
-	{
-		y = 50;		
-	}
-	else if ( y > 50 )
-	{
-		y = -50;
-		// deadth = true;
-		// return ;
-	}
+
+	// 2. No Ground
+	// if ( x < -50 )
+	// {
+	// 	x = 50;
+	// } 
+	// else if ( x > 50 )
+	// {
+	// 	x = -50;
+	// }
+	// else if (y < -50 )
+	// {
+	// 	y = 50;		
+	// }
+	// else if ( y > 50 )
+	// {
+	// 	y = -50;
+	// 	// deadth = true;
+	// 	// return ;
+	// }
 
 	switch ( direction )
 	{
